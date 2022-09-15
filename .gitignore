@@ -1,24 +1,25 @@
-*/bin/*
-bin/*
-.metadata/
-Zandorum*
-.gradle/
-gradle/
-*/.gradle*
-.recommenders*
-BloodMagic/
-WildTPMod/
+# eclipse
+bin
+*.launch
+.settings
+.metadata
 .classpath
 .project
-.settings/
-CREDITS-fml.txt
-FinderCompass/gradle-app.setting
-LICENSE-fml.txt
-MinecraftForge-Credits.txt
-MinecraftForge-License.txt
-README.txt
-eclipse/
-forge-1.7.10-10.13.4.1614-1.7.10-changelog.txt
-gradlew
-gradlew.bat
-build.gradle
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
