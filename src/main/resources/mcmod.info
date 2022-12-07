@@ -1,0 +1,26 @@
+[
+{
+  "modid": "necromancy",
+  "name": "Necromancy",
+  "description": "This mod is all about Necromancy, also known as the art of reanimation. Create your own Minions and infuse them with life!",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/necromancy",
+  "updateUrl": "",
+  "authorList": [
+    "All versions below 1.8.9",
+    "AtomicStryker",
+    "sirolf2009",
+    "Mr_boness",
+    "Fabiulu",
+    "TheBlackPixel",
+    "All versions past 1.7.10",
+    "RedroseWarrior1"
+  ],
+  "credits": "sirolf2009, Mr_boness, Fabiulu and TheBlackPixel",
+  "logoFile": "logo.png",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
