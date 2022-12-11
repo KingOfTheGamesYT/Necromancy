@@ -28,6 +28,11 @@ public class ShapedRecipes4x4 implements IRecipe
     }
 
     @Override
+    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+        return new ItemStack[0];
+    }
+
+    @Override
     public boolean matches(InventoryCrafting inventorycrafting, World world)
     {
         for (int i = 0; i <= 4 - recipeWidth; i++)
