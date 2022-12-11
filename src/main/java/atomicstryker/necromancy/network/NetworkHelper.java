@@ -1,6 +1,7 @@
 package atomicstryker.necromancy.network;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -9,12 +10,12 @@ import java.util.EnumMap;
 import java.util.HashSet;
 
 import net.minecraft.entity.player.EntityPlayerMP;
-import cpw.mods.fml.common.network.FMLEmbeddedChannel;
-import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
-import cpw.mods.fml.common.network.FMLOutboundHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.relauncher.Side;
+import net.minecraftforge.fml.common.network.FMLEmbeddedChannel;
+import net.minecraftforge.fml.common.network.FMLIndexedMessageToMessageCodec;
+import net.minecraftforge.fml.common.network.FMLOutboundHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+
 
 /**
  * 
@@ -45,10 +46,10 @@ public class NetworkHelper
      * @param channelName channel name to use, anything but already taken designations goes
      * @param handledPacketClasses provide the IPacket classes you want to use for communication here
      */
-    @SafeVarargs
+
     public NetworkHelper(String channelName, Class<? extends IPacket> ... handledPacketClasses)
     {
-        EnumMap<Side, FMLEmbeddedChannel> channelPair = NetworkRegistry.INSTANCE.newChannel(channelName, new ChannelCodec(handledPacketClasses), new ChannelHandler());
+        EnumMap<Side, FMLEmbeddedChannel> channelPair = NetworkRegistry.INSTANCE.newChannel(channelName, (io.netty.channel.ChannelHandler) new ChannelCodec(handledPacketClasses), new ChannelHandler());
         clientOutboundChannel = channelPair.get(Side.CLIENT);
         serverOutboundChannel = channelPair.get(Side.SERVER);
         
@@ -129,7 +130,7 @@ public class NetworkHelper
      * @param packet
      * @param tp
      */
-    public void sendPacketToAllAroundPoint(IPacket packet, TargetPoint tp)
+    public void sendPacketToAllAroundPoint(IPacket packet, NetworkRegistry.TargetPoint tp)
     {
         checkClassAndSync(packet.getClass());
         serverOutboundChannel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT);
@@ -176,7 +177,6 @@ public class NetworkHelper
     private class ChannelCodec extends FMLIndexedMessageToMessageCodec<IPacket>
     {
         
-        @SafeVarargs
         public ChannelCodec(Class<? extends IPacket> ... handledPacketClasses)
         {
             for (int i = 0; i < handledPacketClasses.length; i++)
