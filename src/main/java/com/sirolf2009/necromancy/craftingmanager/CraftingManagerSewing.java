@@ -204,8 +204,8 @@ public class CraftingManagerSewing
         if (i == 2 && itemstack == itemstack1 && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isDamageable())
         {
             Item item = itemstack.getItem();
-            int l = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
-            int i1 = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();
+            int l = item.getMaxDamage() - itemstack.getItemDamage();
+            int i1 = item.getMaxDamage() - itemstack1.getItemDamage();
             int j1 = l + i1 + item.getMaxDamage() * 10 / 100;
             int k1 = item.getMaxDamage() - j1;
             if (k1 < 0)
