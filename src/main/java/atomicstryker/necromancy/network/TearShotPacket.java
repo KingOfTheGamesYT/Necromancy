@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import atomicstryker.necromancy.network.NetworkHelper.IPacket;
-import cpw.mods.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class TearShotPacket implements IPacket
 {
@@ -40,7 +40,7 @@ public class TearShotPacket implements IPacket
         user = ByteBufUtils.readUTF8String(bytes);
         blood = bytes.readBoolean();
         
-        EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().func_152612_a(user);
+        EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(user);
         if (player != null)
         {
             EntityTear tear = blood ? new EntityTearBlood(player.worldObj, player) : new EntityTear(player.worldObj, player);
