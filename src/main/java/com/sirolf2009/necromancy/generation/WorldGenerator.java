@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import cpw.mods.fml.common.IWorldGenerator;
+import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenerator implements IWorldGenerator
 {
@@ -15,7 +15,7 @@ public class WorldGenerator implements IWorldGenerator
         int x = random.nextInt(16) * chunkX;
         int y = random.nextInt(60);
         int z = random.nextInt(16) * chunkZ;
-        if (world.provider.dimensionId == -1)
+        if (world.provider.getDimensionId() == -1)
         {
             new WorldGenNetherChalice().generate(world, random, x, y, z);
         }

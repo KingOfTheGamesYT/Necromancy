@@ -106,7 +106,7 @@ public class Necromancy
         RegistryNecromancyItems.initItems();
         RegistryNecromancyEntities.initEntities();
 
-        MapGenStructureIO.func_143031_a(ComponentVillageCemetery.class, "NeViCem");
+        MapGenStructureIO.registerStructureComponent(ComponentVillageCemetery.class, "NeViCem");
         VillagerRegistry.instance().registerVillageCreationHandler(villageHandler);
         GameRegistry.registerWorldGenerator(new WorldGenerator(), 5);
     }
