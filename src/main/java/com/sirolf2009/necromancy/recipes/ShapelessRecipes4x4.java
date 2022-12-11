@@ -27,6 +27,11 @@ public class ShapelessRecipes4x4 implements IRecipe
     }
 
     @Override
+    public ItemStack[] getRemainingItems(InventoryCrafting inv) {
+        return new ItemStack[0];
+    }
+
+    @Override
     public ItemStack getCraftingResult(InventoryCrafting par1InventoryCrafting)
     {
         return recipeOutput.copy();
